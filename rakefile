@@ -1,0 +1,42 @@
+Dir['tasks/*.rakefile'].each { |rakefile| import rakefile }
+
+task :install, [:arg] do |_t, args|
+  Rake::Task['install:install_bundler'].invoke
+  Rake::Task['install:bundle_install'].invoke(args[:arg])
+end
+
+namespace :install do
+  task :install_bundler do
+    sh 'gem install bundler'
+  end
+
+  task :bundle_install, [:arg] do |_t, args|
+    folder = "runner/#{args[:arg]}"
+    next puts "Folder not found: #{folder}" unless File.directory?(folder)
+
+    Bundler.with_clean_env { system "cd #{folder} && bundle install" }
+  end
+
+  task :ios do
+    sh 'brew install --HEAD libimobiledevice'
+    sh 'brew install ideviceinstaller'
+  end
+
+  task :android do
+    sh 'sudo apt-get install zip openjdk-9-jre-headless openjdk-9-jdk-headless lib32stdc++6 lib32z1'
+  end
+end
+
+namespace :hive do
+  task :start, [:arg] do |_t, args|
+    folder = "runner/#{args[:arg]}"
+    next puts "Folder not found: #{folder}" unless File.directory?(folder)
+
+    Bundler.with_clean_env { system "cd #{folder} && bundle exec hived start" }
+    sh 'bundle exec hived status'
+  end
+end
+
+task :stop do
+  sh 'bundle exec hived stop'
+end

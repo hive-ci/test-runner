@@ -1,0 +1,48 @@
+test:
+  daemon_name: <%= ENV['HIVE_RUNNER_NAME'] || 'SHELL_HIVE' %>
+
+  controllers:
+    shell:
+      # Number of shell workers to allocate
+      workers: 5
+      # Queue for each shell worker
+      queues:
+        - bash
+      # Number of ports to allocate to each shell worker
+      port_range_size: 50
+      name_stub: SHELL_WORKER
+
+  # Range of ports to be made available to workers
+  ports:
+    minimum: 4000
+    maximum: 5000
+
+  # Logging configuration
+  logging:
+    directory: <%= Dir.pwd %>/log
+    pids: <%= Dir.pwd %>/pids
+    main_filename: hive.log
+    main_level: INFO
+    worker_level: INFO
+    home: <%= Dir.pwd %>/workspaces
+    homes_to_keep: 5
+    #hm_logs_to_delete: info
+
+  # Timing configuration
+  timings:
+    worker_loop_interval: 5
+    controller_loop_interval: 5
+
+  # Configuration for various network options
+  network:
+    scheduler: <%= ENV['HIVE_CI_URL'] || 'http://localhost:3000' %>
+    hive_mind: <%= ENV['HIVE_MIND_URL'] || 'http://localhost:3001' %>
+    # Optional cert paths:
+    # cert: /path/to/certificate.pem
+    # cafile: /path/to/certificate-authorities.pem
+
+  # Configuration for diagnostic plugins
+  diagnostics:
+    hive:
+      load_warning: 0.7
+      load_error: 1.5

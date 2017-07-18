@@ -1,0 +1,26 @@
+ruby-version: '2.3.0'
+shell-profile: '.zshrc'
+
+genral:
+  prerequisites:
+    - 'zsh'
+    - 'rvm'
+    - 'ruby'
+
+osx:
+  prerequisites:
+    - 'xcode'
+    - 'brew'
+  packages:
+    - '--HEAD libimobiledevice'
+    - 'ideviceinstaller'
+
+linux:
+  prerequisites:
+    - 'android-tools'
+    - 'android-sdk-24.2'
+    - 'java7'
+  repos:
+    - ''
+  packages:
+    - ''
