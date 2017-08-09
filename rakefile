@@ -42,6 +42,16 @@ namespace :hive do
   end
 end
 
-task :stop do
-  sh 'bundle exec hived stop'
+task :stop, [:arg] do |_t, args|
+  folder = "runner/#{args[:arg]}"
+  next puts "Folder not found: #{folder}" unless File.directory?(folder)
+
+  Bundler.with_clean_env do
+    command = <<-EOF
+      cd #{folder} && \
+      bundle exec hived stop
+    EOF
+
+    system(command)
+  end
 end
