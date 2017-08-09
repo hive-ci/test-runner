@@ -1,5 +1,3 @@
-Dir['tasks/*.rakefile'].each { |rakefile| import rakefile }
-
 task :install, [:arg] do |_t, args|
   Rake::Task['install:install_bundler'].invoke
   Rake::Task['install:bundle_install'].invoke(args[:arg])
@@ -32,8 +30,15 @@ namespace :hive do
     folder = "runner/#{args[:arg]}"
     next puts "Folder not found: #{folder}" unless File.directory?(folder)
 
-    Bundler.with_clean_env { system "cd #{folder} && bundle exec hived start" }
-    sh 'bundle exec hived status'
+    Bundler.with_clean_env do
+      command = <<-EOF
+        cd #{folder} && \
+        bundle exec hived start && \
+        bundle exec hived status
+      EOF
+
+      system(command)
+    end
   end
 end
 
