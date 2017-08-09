@@ -25,20 +25,18 @@ namespace :install do
   end
 end
 
-namespace :hive do
-  task :start, [:arg] do |_t, args|
-    folder = "runner/#{args[:arg]}"
-    next puts "Folder not found: #{folder}" unless File.directory?(folder)
+task :start, [:arg] do |_t, args|
+  folder = "runner/#{args[:arg]}"
+  next puts "Folder not found: #{folder}" unless File.directory?(folder)
 
-    Bundler.with_clean_env do
-      command = <<-EOF
-        cd #{folder} && \
-        bundle exec hived start && \
-        bundle exec hived status
-      EOF
+  Bundler.with_clean_env do
+    command = <<-EOF
+      cd #{folder} && \
+      bundle exec hived start && \
+      bundle exec hived status
+    EOF
 
-      system(command)
-    end
+    system(command)
   end
 end
 
@@ -51,6 +49,20 @@ task :stop, [:arg] do |_t, args|
       cd #{folder} && \
       bundle exec hived stop
     EOF
+
+    system(command)
+  end
+end
+
+task :status, [:arg] do |_t, args|
+  folder = "runner/#{args[:arg]}"
+  next puts "Folder not found: #{folder}" unless File.directory?(folder)
+
+  Bundler.with_clean_env do
+    command = <<-EOF
+        cd #{folder} && \
+        bundle exec hived status
+      EOF
 
     system(command)
   end
