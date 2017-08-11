@@ -1,5 +1,7 @@
 test:
   daemon_name: <%= ENV['HIVE_RUNNER_NAME'] || 'ANDROID_HIVE' %>
+  brand: <%= ENV['HIVE_RUNNER_NAME'] || 'ANDROID_HIVE' %>
+  model: ANDROID_HIVE
 
   controllers:
     shell:
@@ -50,7 +52,7 @@ test:
     hive:
       load_warning: 0.7
       load_error: 1.5
-      
+
     android:
       uptime:
         reboot_timeout: 86400 # 24hrs
