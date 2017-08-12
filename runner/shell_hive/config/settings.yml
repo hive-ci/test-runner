@@ -1,7 +1,9 @@
 test:
-  daemon_name: <%= ENV['HIVE_RUNNER_NAME'] || 'SHELL_HIVE' %>
-  brand: <%= ENV['HIVE_RUNNER_NAME'] || 'SHELL_HIVE' %>
+  name: <%= ENV['HIVE_NAME'] || 'HIVE' %>
+  daemon_name: 'SHELL_HIVE'
   model: SHELL_HIVE
+  location: <%= ENV['HIVE_LOCATION'] %>
+  building: <%= ENV['HIVE_BUILDING_LOCATION'] %>
 
   controllers:
     shell:
