@@ -1,6 +1,6 @@
 GIT
   remote: git@github.com:hive-ci/hive-runner.git
-  revision: 42e8677d2d3af11f4e6e33a663827ea5a86b118d
+  revision: 1cc203ae1cce5302f396d62f974f979c0ab00352
   specs:
     hive-runner (2.1.28)
       activerecord (~> 4.2)
@@ -70,13 +70,13 @@ GEM
     mono_logger (1.1.0)
     multi_json (1.12.1)
     multipart-post (2.0.0)
-    ox (2.5.0)
+    ox (2.6.0)
     rake (12.0.0)
     representable (3.0.4)
       declarative (< 0.1.0)
       declarative-option (< 0.2.0)
       uber (< 0.2.0)
-    res (1.2.22)
+    res (1.2.23)
       hive-messages (~> 1)
       json (~> 1.8)
       ox (~> 2.2)
