@@ -1,6 +1,6 @@
 GIT
   remote: git@github.com:hive-ci/hive-runner-ios.git
-  revision: db1019ea1b4b7073a4016837336c78956db24d52
+  revision: 5b93e4c2977a0ad1899fbebc79a00d9a3b81b107
   specs:
     hive-runner-ios (1.1.12)
       device_api-ios (~> 1.1.0)
@@ -10,7 +10,7 @@ GIT
 
 GIT
   remote: git@github.com:hive-ci/hive-runner.git
-  revision: 1cc203ae1cce5302f396d62f974f979c0ab00352
+  revision: 1ecc7eb12cf6e1fa1e1467cdd02782aeb3668599
   specs:
     hive-runner (2.1.28)
       activerecord (~> 4.2)
