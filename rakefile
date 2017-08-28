@@ -9,10 +9,11 @@ namespace :install do
   end
 
   task :bundle_install, [:arg] do |_t, args|
-    folder = "runner/#{args[:arg]}"
-    next puts "Folder not found: #{folder}" unless File.directory?(folder)
-
-    Bundler.with_clean_env { system "cd #{folder} && bundle install" }
+    if args[:arg].nil?
+      sh 'bundle install'
+    else
+      sh "bundle install --with #{args[:arg]}"
+    end
   end
 
   task :ios do
@@ -33,6 +34,7 @@ task :start, [:arg] do |_t, args|
     command = <<-EOF
       cd #{folder} && \
       bundle exec hived start && \
+      sleep 5 && \
       bundle exec hived status
     EOF
 
@@ -48,6 +50,8 @@ task :stop, [:arg] do |_t, args|
     command = <<-EOF
       cd #{folder} && \
       bundle exec hived stop
+      sleep 5 && \
+      bundle exec hived status
     EOF
 
     system(command)
@@ -69,16 +73,5 @@ task :status, [:arg] do |_t, args|
 end
 
 task :update do
-  folders = Dir.glob('runner/*')
-
-  Bundler.with_clean_env do
-    folders.each do |folder|
-      command = <<-EOF
-        cd #{folder} && \
-        bundle update
-      EOF
-
-      system(command)
-    end
-  end
+  sh 'bundle update'
 end
