@@ -1,6 +1,6 @@
 GIT
   remote: git@github.com:hive-ci/hive-runner-android.git
-  revision: 627cfa7e1e02fdb6cea3e675424fe645bd39019f
+  revision: f5c5325e3fb308dbd88aa3409b1263b934a98ee8
   specs:
     hive-runner-android (1.2.16)
       device_api-android (~> 1.0, >= 1.2.9)
@@ -9,7 +9,7 @@ GIT
 
 GIT
   remote: git@github.com:hive-ci/hive-runner-ios.git
-  revision: 5b93e4c2977a0ad1899fbebc79a00d9a3b81b107
+  revision: 96e15051c79bdef720d87a6f93628b2402e31ba9
   specs:
     hive-runner-ios (1.1.12)
       device_api-ios (~> 1.1.0)
@@ -38,14 +38,14 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
-    activemodel (4.2.9)
-      activesupport (= 4.2.9)
+    activemodel (4.2.10)
+      activesupport (= 4.2.10)
       builder (~> 3.1)
-    activerecord (4.2.9)
-      activemodel (= 4.2.9)
-      activesupport (= 4.2.9)
+    activerecord (4.2.10)
+      activemodel (= 4.2.10)
+      activesupport (= 4.2.10)
       arel (~> 6.0)
-    activesupport (4.2.9)
+    activesupport (4.2.10)
       i18n (~> 0.7)
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
@@ -65,7 +65,7 @@ GEM
     coercible (1.0.0)
       descendants_tracker (~> 0.0.1)
     daemons (1.2.4)
-    declarative (0.0.9)
+    declarative (0.0.10)
     declarative-option (0.1.0)
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
@@ -92,17 +92,17 @@ GEM
       virtus (~> 1.0)
     i18n (0.8.6)
     ice_nine (0.11.2)
-    ios-devices (0.2.4)
+    ios-devices (0.2.5)
     json (1.8.6)
     mimemagic (0.3.2)
     mind_meld (0.1.12)
       activesupport (~> 4)
     minitest (5.10.3)
     mono_logger (1.1.0)
-    multi_json (1.12.1)
+    multi_json (1.12.2)
     multipart-post (2.0.0)
-    ox (2.6.0)
-    rake (12.0.0)
+    ox (2.8.0)
+    rake (12.1.0)
     representable (3.0.4)
       declarative (< 0.1.0)
       declarative-option (< 0.2.0)
@@ -145,4 +145,4 @@ DEPENDENCIES
   rake
 
 BUNDLED WITH
-   1.15.3
+   1.16.0.pre.2
