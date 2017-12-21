@@ -1,74 +1,78 @@
-task :install, [:arg] do |_t, args|
-  Rake::Task['install:install_bundler'].invoke
-  Rake::Task['install:bundle_install'].invoke(args[:arg])
-end
+@runner_type = ENV['TEST_RUNNER_TYPE'] || 'SHELL'
+@test_runner = @runner_type.to_s.downcase
+
+desc 'Install all development dependencies'
+task install: [
+  'install:install_bundler',
+  'install:bundle_install',
+  'install:mobile_runner'
+]
 
 namespace :install do
   task :install_bundler do
     sh 'gem install bundler'
   end
 
-  task :bundle_install, [:arg] do |_t, args|
-    if args[:arg].nil?
-      sh 'bundle install'
-    else
-      sh "bundle install --with #{args[:arg]}"
-    end
+  task :bundle_install do
+    sh 'bundle install'
+  end
+
+  task :mobile_runner do
+    Rake::Task['install:ios'].invoke if @test_runner.casecmp('IOS').zero?
+    Rake::Task['install:iandroid'].invoke if @test_runner.casecmp('ANDROID').zero?
   end
 
   task :ios do
-    sh 'brew install --HEAD libimobiledevice'
-    sh 'brew install ideviceinstaller'
+    sh 'brew install --HEAD libimobiledevice --force'
+    sh 'brew install ideviceinstaller --force'
   end
 
   task :android do
-    sh 'sudo apt-get install zip openjdk-9-jre-headless openjdk-9-jdk-headless lib32stdc++6 lib32z1'
+    sh 'sudo apt install android-tools-adb android-tools-fastboot'
   end
 end
 
-task :start, [:arg] do |_t, args|
-  folder = "runner/#{args[:arg]}"
+task :start do
+  folder = "runner/#{@runner_type}"
   next puts "Folder not found: #{folder}" unless File.directory?(folder)
 
-  Bundler.with_clean_env do
-    command = <<-EOF
-      cd #{folder} && \
-      bundle exec hived start && \
-      sleep 5 && \
-      bundle exec hived status
-    EOF
-
-    system(command)
+  Dir.chdir(folder) do
+    system 'PWD'
+    puts 'Waiting for Device Runner...'
+    sh 'bundle exec hived start'
+    system 'sleep 10'
+    system 'bundle exec hived status'
   end
 end
 
-task :stop, [:arg] do |_t, args|
-  folder = "runner/#{args[:arg]}"
+task :stop do
+  folder = "runner/#{@runner_type}"
   next puts "Folder not found: #{folder}" unless File.directory?(folder)
 
-  Bundler.with_clean_env do
-    command = <<-EOF
-      cd #{folder} && \
-      bundle exec hived stop
-      sleep 5 && \
-      bundle exec hived status
-    EOF
-
-    system(command)
+  Dir.chdir(folder) do
+    system 'PWD'
+    puts 'Stopping Test Runner...'
+    sh 'bundle exec hived stop -f'
+    system 'sleep 10'
+    system 'bundle exec hived status'
   end
 end
 
-task :status, [:arg] do |_t, args|
-  folder = "runner/#{args[:arg]}"
+task :kill do
+  Rake::Task['stop'].invoke
+  system "ps -ef | grep _WORKER | grep -v grep | awk '{print $2}' | xargs kill -9"
+  system 'sleep 3'
+  system 'ps -ef | grep _WORKER'
+end
+
+task :status do
+  folder = "runner/#{@runner_type}"
   next puts "Folder not found: #{folder}" unless File.directory?(folder)
 
-  Bundler.with_clean_env do
-    command = <<-EOF
-        cd #{folder} && \
-        bundle exec hived status
-      EOF
-
-    system(command)
+  Dir.chdir(folder) do
+    system 'PWD'
+    puts 'Checking Test Runner...'
+    system 'bundle exec hived status'
   end
 end
 
