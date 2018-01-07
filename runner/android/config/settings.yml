@@ -57,7 +57,7 @@ test:
 
     android:
       uptime:
-        reboot_timeout: 86400 # 24hrs
+        reboot_timeout: 10800 # 3hrs
 
       # Tests will stop running if the following conditions are meet
       battery:
