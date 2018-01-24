@@ -1,33 +1,17 @@
 GIT
-  remote: git@github.com:hive-ci/hive-runner-android.git
-  revision: 6224ad36c74f74a4c6e7ae4ccf3c0daebdb38156
-  specs:
-    hive-runner-android (1.2.16)
-      device_api-android (~> 1.0, >= 1.2.9)
-      hive-runner (~> 2.1.18)
-      terminal-table (>= 1.4)
-
-GIT
-  remote: git@github.com:hive-ci/hive-runner-ios.git
-  revision: 96e15051c79bdef720d87a6f93628b2402e31ba9
-  specs:
-    hive-runner-ios (1.1.12)
-      device_api-ios (~> 1.1.0)
-      fruity_builder (~> 1.1.0)
-      hive-messages (>= 1.0.7)
-      hive-runner (~> 2.1.28)
-
-GIT
   remote: git@github.com:hive-ci/hive-runner.git
-  revision: 1ecc7eb12cf6e1fa1e1467cdd02782aeb3668599
+  revision: 19212cc7bc1650caf03aa4353e91fea28017c74b
   specs:
-    hive-runner (2.1.28)
+    hive-runner (3.0.0)
       activerecord (~> 4.2)
       airbrake-ruby (~> 1.2.2)
       chamber (~> 2.7)
       code_cache (~> 0.2)
-      daemons (~> 1.2)
-      hive-messages (~> 1.0, >= 1.0.6)
+      daemons (~> 1.2.6)
+      device_api-android (~> 1.0, >= 1.2.9)
+      device_api-ios (~> 1.1.0)
+      fruity_builder (~> 1.1.0)
+      hive-messages (>= 1.0.7)
       mind_meld (~> 0.1.12)
       mono_logger (~> 1.1)
       res (~> 1.2.17)
@@ -58,9 +42,9 @@ GEM
       ice_nine (~> 0.11.0)
       thread_safe (~> 0.3, >= 0.3.1)
     builder (3.2.3)
-    chamber (2.11.0)
+    chamber (2.12.2)
       hashie (~> 3.3)
-      thor (~> 0.19.1)
+      thor (>= 0.19.1, < 0.21)
     code_cache (0.2.3)
     coercible (1.0.0)
       descendants_tracker (~> 0.0.1)
@@ -91,7 +75,7 @@ GEM
       multipart-post (~> 2.0)
       roar (~> 1.0)
       virtus (~> 1.0)
-    i18n (0.9.1)
+    i18n (0.9.3)
       concurrent-ruby (~> 1.0)
     ice_nine (0.11.2)
     ios-devices (0.2.5)
@@ -104,7 +88,7 @@ GEM
     multi_json (1.13.1)
     multipart-post (2.0.0)
     ox (2.8.2)
-    rake (12.1.0)
+    rake (12.3.0)
     representable (3.0.4)
       declarative (< 0.1.0)
       declarative-option (< 0.2.0)
@@ -125,7 +109,7 @@ GEM
     test_rail-api (0.4.1)
       json (~> 1.0)
       virtus (~> 1.0)
-    thor (0.19.4)
+    thor (0.20.0)
     thread_safe (0.3.6)
     tzinfo (1.2.4)
       thread_safe (~> 0.1)
@@ -142,8 +126,6 @@ PLATFORMS
 
 DEPENDENCIES
   hive-runner!
-  hive-runner-android!
-  hive-runner-ios!
   rake
 
 BUNDLED WITH
