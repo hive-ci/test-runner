@@ -1,6 +1,6 @@
 GIT
   remote: git@github.com:hive-ci/hive-runner.git
-  revision: 19212cc7bc1650caf03aa4353e91fea28017c74b
+  revision: 3fca9e9bc91b313ea99cf585fea976ee4003fdd3
   specs:
     hive-runner (3.0.0)
       activerecord (~> 4.2)
