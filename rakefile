@@ -60,9 +60,9 @@ end
 
 task :kill do
   Rake::Task['stop'].invoke
-  system "ps -ef | grep _WORKER | grep -v grep | awk '{print $2}' | xargs kill -9"
-  system 'sleep 3'
-  system 'ps -ef | grep _WORKER'
+  pid_list = `ps -ef | grep _WORKER | grep -v grep | awk '{print $2}'`.split("\n")
+  parent_process_id = `ps -o ppid= -p #{pid_list.first.to_i}`
+  system "kill -9 #{parent_process_id}"
 end
 
 task :status do
