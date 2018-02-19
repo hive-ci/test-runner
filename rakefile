@@ -76,6 +76,10 @@ task :status do
   end
 end
 
+task reload: %i[stop update start] do
+  puts 'Reload runner'
+end
+
 task :update do
   sh 'bundle update'
 end
