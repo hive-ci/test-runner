@@ -34,8 +34,8 @@ test:
     directory: <%= Dir.pwd %>/log
     pids: <%= Dir.pwd %>/pids
     main_filename: hive.log
-    main_level: INFO
-    worker_level: INFO
+    main_level: DEBUG
+    worker_level: DEBUG
     home: <%= Dir.pwd %>/workspaces
     homes_to_keep: 5
     #hm_logs_to_delete: info
