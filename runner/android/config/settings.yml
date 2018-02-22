@@ -55,12 +55,12 @@ test:
       load_warning: 0.7
       load_error: 1.5
 
-    android:
-      uptime:
-        reboot_timeout: 10800 # 3hrs
-
-      # Tests will stop running if the following conditions are meet
-      battery:
-        # level: 20      # > 20% - not implemented
-        temperature: 320 # < 32°C
-        voltage: 4600    # < 4600mV
+    # android:
+    #   uptime:
+    #     reboot_timeout: 10800 # 3hrs
+    #
+    #   # Tests will stop running if the following conditions are meet
+    #   battery:
+    #     # level: 20      # > 20% - not implemented
+    #     temperature: 320 # < 32°C
+    #     voltage: 4600    # < 4600mV
