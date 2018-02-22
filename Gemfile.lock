@@ -1,6 +1,6 @@
 GIT
   remote: git@github.com:hive-ci/hive-runner.git
-  revision: a80c82fa88c43e66b35b21c7e5757974c5591d71
+  revision: 3adb1b3dc99a7e0fb1f6ca66a6077fe607e7f8d4
   branch: master
   specs:
     hive-runner (3.0.0)
