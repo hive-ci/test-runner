@@ -4,6 +4,7 @@ test:
   model: IOS_HIVE
   location: <%= ENV['HIVE_LOCATION'] %>
   building: <%= ENV['HIVE_BUILDING_LOCATION'] %>
+  team: <%= ENV['HIVE_TEAM'] %>
 
   controllers:
     shell:
@@ -15,10 +16,12 @@ test:
       # Number of ports to allocate to each shell worker
       port_range_size: 50
       name_stub: SHELL_WORKER
+      queue_prefix: <%= ENV['HIVE_QUEUE_PREFIX'] %>
     ios:
       # Number of ports to allocate to each ios worker
       port_range_size: 50
       name_stub: IOS_WORKER
+      queue_prefix: <%= ENV['HIVE_QUEUE_PREFIX'] %>
 
   # Range of ports to be made available to workers
   ports:

@@ -1,6 +1,6 @@
 GIT
   remote: git@github.com:hive-ci/hive-runner.git
-  revision: 3adb1b3dc99a7e0fb1f6ca66a6077fe607e7f8d4
+  revision: 8557a9a06081962d8307e1ab7471b3e2cf695e1d
   branch: master
   specs:
     hive-runner (3.0.0)
@@ -64,7 +64,7 @@ GEM
       ios-devices (>= 0.2)
       ox (>= 2.1.0)
     equalizer (0.0.11)
-    ffi (1.9.21)
+    ffi (1.9.25)
     fruity_builder (1.1.1)
       ox (>= 2.1.0)
     hashie (3.5.7)
@@ -88,8 +88,8 @@ GEM
     mono_logger (1.1.0)
     multi_json (1.13.1)
     multipart-post (2.0.0)
-    ox (2.8.2)
-    rake (12.3.0)
+    ox (2.9.2)
+    rake (12.3.1)
     representable (3.0.4)
       declarative (< 0.1.0)
       declarative-option (< 0.2.0)
